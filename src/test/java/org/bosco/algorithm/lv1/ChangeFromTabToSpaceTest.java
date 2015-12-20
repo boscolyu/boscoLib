@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -23,31 +22,34 @@ public class ChangeFromTabToSpaceTest {
 	public void testChangeFromTabToSpace() {
 		
 		ChangeFromTabToSpace changer = new ChangeFromTabToSpace() ;
-		String source = loadSourceFile("spaceSource.txt");
+		String source = loadSourceFile("./src/main/resources/org/bosco/algorithm/lv1/spaceSource.txt", "utf-8");
 		Assert.assertNotNull(source);
+		Assert.assertNotSame("", source);
+		
 		String output = changer.changeFromTabToSpace(source);
+		boolean result = changer.checkTabInSource(output);
 		
-		
-		
-		
+		Assert.assertTrue(result);
 	}
 
-	private String loadSourceFile(String filePath) {
-		String current;
-		try {
-			current = new java.io.File( "." ).getCanonicalPath();
-			logger.info("info : {}", current);
+	private String loadSourceFile(String filePath, String charset) {
 
-		//Iterable<Path> paths = FileSystems.getDefault().getRootDirectories();
-		//logger.info("info : {}", paths.toString());
-		
-			Path path = FileSystems.getDefault().getPath(current, "src/main/resources/org/bosco/algorithm/lv1", "spaceSource.txt");
+		try {
+			Path path = FileSystems.getDefault().getPath(filePath);
 
 			if (Files.notExists(path)) {
-				logger.error("file is not exist {}", path.toString());
+				logger.error("File is not exist {}", path.toString());
 				return null;
 			}
-			List<String> source = Files.readAllLines(path, Charset.forName("utf-8"));
+			
+			List<String> source = Files.readAllLines(path, Charset.forName(charset));
+			
+			StringBuilder builder = new StringBuilder();
+			for (String lineSource : source) {
+				builder.append(lineSource);
+				builder.append("\n");
+			}
+			return builder.toString();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
