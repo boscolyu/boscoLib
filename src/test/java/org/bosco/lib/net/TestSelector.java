@@ -24,14 +24,14 @@ public class TestSelector {
 	private void startServer() {
 		try (
 			Selector selector = Selector.open();
-			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open()
 		) {
 			if ((serverSocketChannel.isOpen()) && (selector.isOpen())) {
 				serverSocketChannel.configureBlocking(false);
 				serverSocketChannel.bind(new InetSocketAddress(8888));
 				
 				serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-				System.out.println("접속 대기중");
+				System.out.println("starte test");
 				
 				while (true) {
 					selector.select();
@@ -58,7 +58,7 @@ public class TestSelector {
 				}
 			}
 			else {
-				System.out.println("서버 소켓을 생성하지 못했습니다.");
+				System.out.println("test");
 			}
 		}
 		catch (IOException e) {		// TODO Auto-generated catch block
