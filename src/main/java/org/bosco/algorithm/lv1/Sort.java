@@ -19,8 +19,21 @@ public class Sort {
 	}
 
 	public int[] selectionsortAscending(int[] notSortArray) {
-		int[] sortAscendingArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-		return sortAscendingArray;
+		int [] sourceArray = notSortArray.clone();
+		for (int i = 0; i < sourceArray.length; i++) {
+			int index = i;
+			int min = sourceArray[i];
+			for (int j = i + 1; j < sourceArray.length; j++) {
+				if (sourceArray[j] < min) {
+					min = sourceArray[j];
+					index = j;
+				}
+			}
+			int temp = sourceArray[i];
+			sourceArray[i] = sourceArray[index];
+			sourceArray[index] = temp;
+		}
+		return sourceArray;
 	}
 
 	public int[] bubblesortAscending(int[] notSortArray) {
