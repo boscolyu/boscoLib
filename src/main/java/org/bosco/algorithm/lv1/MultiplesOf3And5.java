@@ -27,6 +27,9 @@ public class MultiplesOf3And5 {
 		long bigO = 0;
 		
 		long currentPos = 0;
+
+
+
 		for (long i = 0; i < max; i = i + first) {
 			sum = sum + i;	
 			bigO++;

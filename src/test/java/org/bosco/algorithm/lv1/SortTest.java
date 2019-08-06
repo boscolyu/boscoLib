@@ -1,14 +1,11 @@
 package org.bosco.algorithm.lv1;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import junit.framework.Assert;
 
 public class SortTest {
 
-	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Test
 	public void testInsertSort() {

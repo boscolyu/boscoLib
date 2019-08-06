@@ -27,7 +27,7 @@ public class MultiplesOf3And5Test {
 		long start = System.currentTimeMillis();
 		sum = new MultiplesOf3And5().multiplesOf3And5Method1(1000000000);
 		long end = System.currentTimeMillis();
-		System.out.println("time : " + (end - start));
+		logger.info("time : " + (end - start));
 		Assert.assertEquals(expected, sum);
 	}
 	
