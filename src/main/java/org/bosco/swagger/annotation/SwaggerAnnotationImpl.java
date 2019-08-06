@@ -23,7 +23,7 @@ public class SwaggerAnnotationImpl {
             produces = "application/json",
             notes = "description of test api")
     public String home(@ApiParam(value = "id", required = true) @PathVariable("id") Integer id) {
-        return "Hello World of CustomAnnotationImpl!<br>" + id.toString();
+        return "Hello World of CustomAnnotationImpl!<br>   " + id.toString();
     }
 
 }
